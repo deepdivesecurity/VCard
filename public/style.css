@@ -1,0 +1,280 @@
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra large (xl) devices (Large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+#0c9dc9 Light Blue
+#004459 Dark Blue
+ */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+
+#back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+
+#logo {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+}
+
+#logo:after,
+#logo:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 1em;
+    width: 100%;
+    margin-top: 5px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+
+}
+
+#logo:before {
+    border-left: 2px solid;
+    border-right: 2px solid;
+    -webkit-transform: scale(1,0);
+    transform: scale(1,0);
+}
+
+#logo:after {
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    -webkit-transform: scale(0,1);
+    transform: scale(0,1);
+}
+
+#logo:hover:after,
+#logo:hover:before {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.navbar {
+    padding: .1rem;
+}
+
+.navbar-nav li {
+    padding-right: 20px;
+}
+
+.nav-link {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+    font-size: 1.1em !important;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.nav-link:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-link:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.active > .nav-link {
+    border-bottom: 2px solid #000;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 50%;
+}
+
+.carousel-inner video {
+    min-height: 100% !important;
+    min-width: 100% !important;
+    height: 50% !important;
+    width: auto !important;
+    overflow: hidden;
+    object-fit: cover;
+}
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-caption h1 {
+    font-size: 500%;
+    /*text-transform: uppercase;*/
+    text-shadow: 1px 1px 15px #000;
+}
+
+.carousel-caption h3 {
+    font-size: 200%;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 1rem;
+}
+
+.btn-primary {
+    background-color: #0c9dc9;
+    border: 1px solid #0c9dc9;
+}
+
+.btn-primary:hover {
+    background-color: #004459;
+    border: 1px solid #004459;
+}
+
+.padding {
+    padding-bottom: 2rem;
+}
+
+footer {
+    background-color: #3f3f3f;
+    height: auto;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+    margin-top: .8rem;
+    margin-bottom: .1rem;
+}
+
+footer a {
+    color: #d5d5d5;
+    text-decoration: underline;
+}
+
+hr.light-100 {
+    border-top: 1px solid #d5d5d5;
+    width: 100%;
+    margin-top: .8rem;
+    margin-bottom: .1rem;
+}
+
+.file {
+    visibility: hidden;
+    position: absolute;
+}
+
+table {
+    height: 175px;
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+textarea[name=status] {
+    width: 100%;
+    resize: none;
+}
+
+/*-- Media Queries --*/
+@media (max-width: 992px) {}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        top: 45%;
+    }
+
+    .carousel-caption h1 {
+        font-size: 350%;
+    }
+
+    .carousel-caption h3 {
+        font-size: 140%;
+        font-weight: 400;
+        padding-bottom: .2rem;
+    }
+
+    .carousel-caption .btn {
+        font-size: 95%;
+        padding: 8px 14px;
+    }
+
+    .display-4 {
+        font-size: 200%;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption {
+        top: 40%;
+    }
+
+    .carousel-caption h1 {
+        font-size: 250%;
+    }
+
+    .carousel-caption h3 {
+        font-size: 110px;
+    }
+
+    .carousel-caption .btn {
+        font-size: 90%;
+        padding: 4px 8px;
+    }
+
+    .carousel-indicators {
+        display: none;
+    }
+
+    .display-4 {
+        font-size: 160%;
+    }
+}
+
+/*-- Firefox Bug Fix --*/
+.carousel-item {
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}
+
+/*-- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
+}

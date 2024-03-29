@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <title>vCard Viewer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DESCRIPTION">
+    <meta name="keywords" content="KEYWORDS">
+    <meta name="author" content="ARK">
+    <!-- End Meta -->
+
+    <!-- CSS -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <!-- End CSS -->
+</head>
+<!-- Body -->
+<body>
+<!-- NavBar -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <h2 align="center"><a id="logo">vCard Viewer</a></h2>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ol class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" id="home_link" data-toggle="collapse" href="#Home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="file_log_link" data-toggle="collapse" href="#File_Log">File Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="card_view_link" data-toggle="collapse" href="#Card_View">Card View</a>
+                </li>
+               <!-- <li class="nav-item">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#uploadFileModal"><i class="fas fa-upload"></i> Upload File</a>
+	       </li>-->
+            </ol>
+        </div>
+    </div>
+</nav>
+<!-- End NavBar -->
+
+<!-- accordion -->
+<div id="accordion">
+    <!-- Start Home -->
+    <div class="panel">
+        <div id="Home" class="collapse show" data-parent="#accordion">
+            <div class="panel-body-slider">
+                <!-- Slider/Video -->
+                <div id="slides" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slides" data-slide-to="0" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="slider-hide-on-mobile">
+                                <video title="background-promotion-video" id="bgvid" autoplay loop muted
+                                       poster="https://www.thefrasier.com/wp-content/themes/frasier/images/Frasier_Home_120314.jpg">
+                                    <source src="https://www.thefrasier.com/wp-content/uploads/2014/12/0_final_reel_home.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <div class="carousel-caption">
+                                <h1 class="display-2">vCard</h1>
+                                <h3>An easier way to contact</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Home -->
+
+    <!-- Start File_Log -->
+    <div class="panel">
+        <div id="File_Log" class="collapse" data-parent="#accordion">
+            <div class="panel-body col-12">
+		<div class="row">
+                    <div class="col-md-6">
+                        <div class="status">
+                            <h4> Status: </h4>
+                            <textarea readonly id="status_text1" name="status" wrap="off" cols="30" rows="3"></textarea>
+                            <button class="btn btn-primary input-sm" onclick="javascript:clearText();"><i class="fas fa-eraser"></i> Clear Status</button>
+			</div>
+		    </div>
+		</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="table-responsive table-bordered table-hover">
+                            <table class="table" id="file_log_table">
+                                <thead>
+                                <tr>
+                                    <th class="th-lg">File Name<br>(Click to Download)</th>
+                                    <th class="th-lg">Individual's Name</th>
+                                    <th class="th-lg">Additional Properties</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="file_upload">
+                            <br>
+                            <div class="form-group">
+                                <form ref='uploadForm' id='uploadForm' method='post' action='/upload' enctype="multipart/form-data" data-toggle="validator">
+                                    <input type="file" name="uploadFile" class="file" id="myFile" accept=".vcf,.vcard">
+                                    <div class="input-group col-xs-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-file"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control input-lg" id="uploadFileText" disabled placeholder="Upload File">
+                                        <span class="input-group-btn">
+                                            <button class="browse btn btn-primary input-lg" type="button"><i class="fas fa-search"></i> Browse</button>
+                                        </span>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <button class="upload btn btn-primary input-lg" type="submit" disabled onclick="location.href='#upload_status';"><i class="fas fa-upload"></i> Upload</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End File_Log -->
+
+    <!-- Start Card_View -->
+    <div id="Card_View" class="collapse" data-parent="#accordion">
+        <div class="panel-body col-12">
+            <div class="dropdown">
+		<div class="row">
+                    <div class="col-md-6">
+                        <div class="status">
+			    <h4>Status: </h4>
+			    <textarea readonly wrap="off" id="status_text2" name="status" cols="30" rows="3"></textarea>
+                            <button class="btn btn-primary input-sm" onclick="javascript:clearText();"><i class="fas fa-eraser"></i> Clear Status</button>
+
+			</div>
+		    </div>
+		</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <select class="form-control form-control-sm" id="card_view_dropdown">
+				<option value="-1">- Select Card -</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="table-responsive table-bordered table-hover">
+                        <table class="table" id="card_view_table">
+                            <thead>
+                            <tr>
+                                <th class="th-lg">Property #</th>
+                                <th class="th-lg">Name</th>
+                                <th class="th-lg">Values</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Card_View -->
+</div>
+<!-- End accordion -->
+
+<!-- Footer -->
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Developer Information</h5>
+                <hr class="light">
+                <p>arkdevelopment</p>
+                <p>Secondary</p>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>vCard Information</h5>
+                <hr class="light">
+                <p>Version: 4.0</p>
+                <a href="https://tools.ietf.org/html/rfc6350">Specifications</a>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Assumptions</h5>
+                <hr class="light">
+                <p>Assumption #1</p>
+                <p>Assumption #2</p>
+            </div>
+
+            <!-- Copyright -->
+            <div class="col-12 float-left">
+                <hr class="light-100">
+                <h5>
+                    <div id="copyright"></div>
+                    <noscript>
+                        © 2018
+                    </noscript>
+                </h5>
+            </div>
+            <!-- End Copyright -->
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Extras -->
+<button type="button" id="back-to-top" class="btn btn-primary btn-lg" role="button" title="Click to return to the top" data-toggle="tooltip" data-placement="left"><i class="fa fa-arrow-up"></i></button>
+
+<!-- Upload File Modal 
+<div id="uploadFileModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload New .vcf/.vcard File</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="file" name="vcf[]" class="file">
+                    <div class="input-group col-xs-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-file"></i></span>
+                        </div>
+                        <input type="text" class="form-control input-lg" disabled placeholder="Upload File">
+                        <span class="input-group-btn">
+                            <button class="browse btn btn-primary input-lg" type="button"><i class="fas fa-search"></i> Browse</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<!-- End Upload File Modal -->
+
+<!-- Load JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+<!-- End Load JavaScript -->
+</body>
+<!-- End Body -->
+</html>
